@@ -1,21 +1,19 @@
 #include <iostream>
 #include "bmp.h"
 #include "steganography.h"
+#include "file_converter.h"
 
 using namespace std;
 
 int main()
 {
-    BMP pic("../pictures/sample_640×426.bmp");
-    cout << hideMessage(pic.data, "Hello world!") << endl;
-    pic.write("../pictures/test.bmp");
-    cout << extractHideMessage(pic.data) << endl;
+//    BMP pic("sample_640×426.bmp");
+//    cout << hideMessage(pic.data, "Hello world!") << endl;
+//    pic.write("test.bmp");
 
-    extrapolateLastBitsToBytes(pic.data);
-    pic.write("../pictures/ext_test.bmp");
-
-    BMP pic2("../pictures/sample_640×426.bmp");
-    extrapolateLastBitsToBytes(pic2.data);
-    pic.write("../pictures/ext_sample_640×426.bmp");
+//    BMP pic2("test.bmp");
+//    cout << extractHideMessage(pic2.data) << endl;
+    auto data = fileToStr("pp.pptx");
+    strToFile("str.pptx", data);
     return 0;
 }

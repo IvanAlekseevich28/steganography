@@ -41,6 +41,9 @@ std::string extractHideMessage(const std::vector<uint8_t> &container, const uint
     auto vecHiddenData = readLastBits(container);
 
     size_t mesLen = getFromVector<size_t>(vecHiddenData, 0);
+    if (mesLen > getMaxByteLen(container))
+        return "";
+
     unsigned mesHash = getFromVector<unsigned>(vecHiddenData, 8);
     std::string mes = getStrFromVector(vecHiddenData, 12, mesLen + 12);
 
