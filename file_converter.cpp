@@ -26,3 +26,16 @@ bool strToFile(const string &filePath, const string& data)
 
     return true;
 }
+
+size_t filesize(const char* filename)
+{
+    std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
+    return in.tellg();
+}
+
+
+bool isFileExists (const std::string& name)
+{
+    ifstream f(name.c_str());
+    return f.good();
+}
