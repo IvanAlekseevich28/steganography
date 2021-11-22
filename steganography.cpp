@@ -6,7 +6,6 @@ static bool readBitFromByte(const uint8_t& data, uint8_t pos = 0);
 static bool getBitFromStr(const std::string& str, unsigned pos);
 static std::vector<uint8_t> readLastBits(const std::vector<uint8_t> &data);
 static bool writeLastBits(std::vector<uint8_t>& container, const std::vector<uint8_t> &data);
-static unsigned getStrHash(const std::string& str);
 static std::string getStrFromVector(const std::vector<uint8_t>& vec, const unsigned start_index, const unsigned end_index);
 static void pushStrToVector(std::vector<uint8_t>& vec, const std::string& str);
 
@@ -135,4 +134,10 @@ static bool writeLastBits(std::vector<uint8_t>& container, const std::vector<uin
     }
 
     return true;
+}
+
+void extrapolateLastBitsToBytes(std::vector<uint8_t> &container)
+{
+    for (auto& byte : container)
+        byte = (byte % 2) * 0xff;
 }
